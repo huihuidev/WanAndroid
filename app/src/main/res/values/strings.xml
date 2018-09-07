@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">WanAndroid</string>
+    <!--<string name="app_name">卍</string>-->
+    <string name="splash_des">启动图</string>
 </resources>

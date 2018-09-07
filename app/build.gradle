@@ -5,6 +5,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'wan'
+            keyPassword 'wan123456'
+            storeFile file('../sign/wandroid.jks')
+            storePassword 'wan123456'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.zhh.wanandroid"
@@ -16,8 +24,16 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            buildConfigField("boolean", "IS_DEBUG", "false")
+            resValue("string", "app_name", "WAndroid")
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            zipAlignEnabled true
+        }
+        debug {
+            buildConfigField("boolean", "IS_DEBUG", "true")
+            resValue("string", "app_name", "卍")
         }
     }
 }
