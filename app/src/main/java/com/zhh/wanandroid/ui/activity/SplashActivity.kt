@@ -26,6 +26,5 @@ class SplashActivity : BaseActivity() {
         }
 
         logD("启动页")
-
     }
 }
